@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "screen-siesta-native": ["../src/index"],
+      "screen-siesta-native/*": ["../src/*"]
+    }
+  }
+}

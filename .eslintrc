@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "universe/native",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "ignorePatterns": ["build"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "react-native",
+            "group": "builtin"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always"
+      }
+    ]
+  }
+}
