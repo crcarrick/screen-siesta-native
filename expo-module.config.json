@@ -1,9 +1,6 @@
 {
-  "platforms": ["ios", "android", "web"],
+  "platforms": ["ios"],
   "ios": {
     "modules": ["ScreenSiestaNativeModule"]
-  },
-  "android": {
-    "modules": ["expo.modules.screensiestanative.ScreenSiestaNativeModule"]
   }
 }

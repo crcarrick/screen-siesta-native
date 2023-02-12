@@ -15,10 +15,18 @@ const emitter = new EventEmitter(
   ScreenSiestaNativeModule ?? NativeModulesProxy.ScreenSiestaNative,
 )
 
+export function addExpireListener(listener: () => void): Subscription {
+  return emitter.addListener('onExpire', listener)
+}
+
 export function addTickListener(
   listener: (event: TickEventPayload) => void,
 ): Subscription {
   return emitter.addListener<TickEventPayload>('onTick', listener)
+}
+
+export function removeListener(subscription: Subscription) {
+  emitter.removeSubscription(subscription)
 }
 
 export { TickEventPayload }
