@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react'
 import { StyleSheet, Button, Text, View } from 'react-native'
+
 import * as ScreenSiestaNative from 'screen-siesta-native'
 
 export default function App() {
-  const [tick, setTick] = useState<number>()
+  const [expired, setExpired] = useState(false)
+  const [value, setValue] = useState(0)
 
   useEffect(() => {
+    ScreenSiestaNative.addExpireListener(() => {
+      setExpired(true)
+    })
+
     ScreenSiestaNative.addTickListener(({ value }) => {
-      setTick(value)
+      setValue(value)
     })
   }, [])
 
@@ -17,7 +23,8 @@ export default function App() {
         title="Start Timer"
         onPress={() => ScreenSiestaNative.startTimer(10)}
       />
-      <Text>{tick}</Text>
+      <Text>Has Expired: {expired === true ? 'True' : 'False'}</Text>
+      <Text>Elapsed: {value}</Text>
     </View>
   )
 }
