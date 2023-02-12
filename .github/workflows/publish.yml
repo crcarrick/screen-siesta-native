@@ -15,12 +15,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: yarn
+
+      - name: 🏗 Setup Auth Token
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: 📦 Install dependencies
-        run: yarn install
+        run: yarn
 
       - name: 🚀 Publish module
         run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
